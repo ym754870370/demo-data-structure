@@ -49,7 +49,7 @@
 
     //散列算法的作用是尽可能快地在数据结构中找到一个值，散列函数的作用是给定一个键值，然后返回值在表中的地址。
 
-    function HashTable() {
+    function HashTable() {//如果使用散列函数就知道值的具体位置，
       var table = [];
       //put(key, value):向散列表增加一个新的项（也能更新散列表）。
       //remove(key): 根据键值从散列表中移除值。
@@ -58,9 +58,9 @@
       var loseloseHashCode = function(key) {
         var hash = 0;
         for (var i = 0; i < key.length; i++) {
-          hash += key.charCodeAt(i);
+          hash += key.charCodeAt(i);//根据key的每个字符的ascii码值的和得到一个数字
         }
-        return hash % 37;
+        return hash % 37;//为了得到小点的值，所以用hash值和一个任意数做除法的余数
       };
       
       this.put = function(key, value) {
@@ -83,8 +83,14 @@
             console.log(i + ': ' + table[i]);
           }
         }
-      }
+      };
     }
+
+    var hash = new HashTable();
+    hash.put('ming','sdasdasdasd');
+    hash.put('yang','dedfsdfsfs');
+    hash.put('weng','fdfjdkjsjdjsk');
+    
     
 
 
