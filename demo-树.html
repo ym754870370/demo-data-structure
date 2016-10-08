@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>队列</title>
+</head>
+<body>
+  <script>
+    //树没有父节点，只有树顶部的节点叫做根节点，无子元素的节点叫做外节点，有子元素的节点叫做内节点
+    //树的深度取决于该节点上有多少个祖先节点
+    //树还有一种概念叫做 子树
+
+
+    //二叉树
+
+    function BinarySearchTree() {
+      var Node = function(key){
+        this.key = key;
+        this.left = null;
+        this.right = null;
+      };
+      var root = null;
+
+      this.insert = function(key){
+        var newNode = new Node(key);
+
+        if (root === null) {
+          root = newNode;
+        } else {
+          insertNode(root, newNode);
+        }
+
+        var insertNode = function(node, newNode){
+          if (newNode.key < node.key) {
+            if (node.left === null) {
+              node.left = newNode;
+            } else {
+              insertNode(node.left, newNode);
+            }
+          } else {
+            if (node.right === null) {
+              node.right = newNode;
+            } else {
+              insertNode(node.right, newNode);
+            }
+          }
+        };
+      };
+    }
+  </script>
+</body>
+
+</html>
