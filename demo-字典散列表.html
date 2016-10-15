@@ -275,9 +275,16 @@
             }
             current = current.next;
           }
-          if () {}
+          if (current.element.key === key) {
+            table[position].remove(current.element);
+            if (table[position].isEmpty()) {
+              table[position] = undefined;
+            }
+            return true;
+          }
         }
-      }
+        return false;
+      };
 
       this.print = function() {
         for (var i = 0; i < table.length; ++i){

@@ -51,7 +51,7 @@
 
 
 
-      
+      //中序遍历
       var inorderTraverseNode = function(node, callback){
         if (node !== null) {
           inorderTraverseNode(node.left, callback);
@@ -64,6 +64,30 @@
         inorderTraverseNode(root, callback);
       };
     }
+
+
+
+    //先序遍历
+    this.preOrderTraverse = function(callback){
+      preOrderTraverseNode(root, callback);
+    };
+
+    var preOrderTraverseNode = function(node, callback){
+      if (node !== null) {
+        callback(node.key);
+        preOrderTraverseNode(node.left, callback);
+        preOrderTraverseNode(node.right, callback);
+      }
+    };
+
+
+
+
+
+
+
+
+
 
 
     var tree = new BinarySearchTree();
