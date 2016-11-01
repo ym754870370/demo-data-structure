@@ -193,7 +193,7 @@
           }
 
           //第三种情况————一个有两个子节点的节点
-          var aux = findeMinNode(node.right);//寻找到右子树中最小的节点
+          var aux = findeMinNode(node.right);//寻找到右子树中最小的节点 也就是右子树中最左的子节点
 
           var findeMinNode = function(node){
             while (node && node.left !== null) {

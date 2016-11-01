@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>队列</title>
+</head>
+<body>
+  <script>
+    function ArrayList(){
+      var array = [];
+      this.insert = function(item){
+        array.push(item);
+      };
+      this.toString = function(){
+        return array.join();
+      };
+
+
+      //冒泡排序
+
+      this.bubbleSort = function(){
+        var length = array.length;
+        for (var i=0; i<length; i++){//执行length轮所有前后元素的一次比较
+          for (var j=0; j<length-1; j++){//将数组中所有的前后元素进行一次比较
+            if (array[j] > array[j+1]) {
+              swap(j, j+1);
+            }
+          }
+        }
+      };
+
+      //冒泡排序升级版
+      this.modifiedBubbleSort = function(){
+        var length = array.length;
+        for (var i = 0; i < length; i++){
+          for (var j = 0; j < length - 1 -i; j++){
+          //每进行一轮比较，最大的数字就会被移到length最后一个位置，因此如果全部再比较一次，则每进行一次，就会增加不必要的比较因此可以减去已比较的轮数来去处不必要的比较
+            if (array[j] < array[j+1]) {
+              swap(j, j+1);
+            }
+          }
+        }
+      };
+
+      var swap = function(index1, index2){//交换数组两个位置的值
+        var aux = array[index1];
+        array[index1] = array[index2];
+        array[index2] = aux;
+      };
+    }
+
+    function createNonSortedArray(size){//测试冒泡排序
+      var array = new ArrayList();
+      for (var i = size; i > 0; i--){
+        array.insert(i);
+      }
+      return array;
+    }
+
+    var array = createNonSortedArray(5);
+    console.log(array.toString());
+    array.bubbleSort();
+    console.log(array.toString());
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
