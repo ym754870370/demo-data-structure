@@ -6,7 +6,27 @@
 </head>
 <body>
   <script>
+      //二叉树
+
+    function BinarySearchTree(){
       
+      var Node = function(key){//设置一个节点
+        this.key = key; //节点自身值
+        this.left = null; //节点的左节点指针
+        this.right = null;//节点的右节点指针
+      };
+      
+      var root = null; //先声明根变凉
+
+      this.insert = function(key){ //插入元素
+        var newNode = new Node(key); //将传入的值继承节点的格式，并导入该节点
+
+        if (root === null) {
+          root = newNode;//判断二叉树有无根节点，无则将新节点变成根节点
+        } else {
+          insertNode(root, newNode);//如果二叉树有根节点，则调用下面方法进行节点的插入
+        }
+      }
 
   </script>
 </body>
