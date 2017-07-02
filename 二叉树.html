@@ -16,7 +16,7 @@
         this.right = null;//节点的右节点指针
       };
       
-      var root = null; //先声明根变凉
+      var root = null; //先声明根变量
 
       this.insert = function(key){ //插入元素
         var newNode = new Node(key); //将传入的值继承节点的格式，并导入该节点
@@ -27,6 +27,25 @@
           insertNode(root, newNode);//如果二叉树有根节点，则调用下面方法进行节点的插入
         }
       }
+
+      var insertNode = function(node, newNode){
+        if (newNode.key < node.key) {//如果新的节点的值小于其父节点值则传递到该父节点的左节点
+          if (node.left === null) {
+            node.left = newNode;//如果父节点的左节点指针指向空则将指针指向该节点
+          } else {
+            insertNode(node.left, newNode);
+            //如果父节点的左节点指针不为空则将该节点的左节点再作为父节点再次调用函数方法继续判断无限向下直到某个位置左右节点指针为空
+          }
+        } else {
+          if (node.right === null) {
+            node.right = newNode;
+          } else {
+            insertNode(node.right, newNode);
+          }
+        }
+      };
+
+    }
 
   </script>
 </body>
