@@ -45,6 +45,51 @@
         }
       };
 
+      //中序遍历
+      this.inOrderTraverse = function(callback){
+        inorderTraverseNode(root, callback);
+      };
+
+      var inorderTraverseNode = function(node, callback){
+        if (node !== null) {
+          inorderTraverseNode(node.left, callback);
+          //左节点， 这几个方法的执行顺序不应该时从最底层开始，然而先执行最底层的node,再执行它的父节点，那其的左右节点不是又要再执行一遍吗？？？？
+          //因为它们时层层包裹的关系，不会对节点值进行重复打印
+          callback(node.key);//根节点
+          inorderTraverseNode(node.right, callback);//右节点
+        }
+      };
+      
+
+
+      //先序遍历
+      this.preOrderTraverse = function(callback){
+        preOrderTraverseNode(root, callback);
+      };
+
+      var preOrderTraverseNode = function(node, callback){
+        if (node !== null) {
+          callback(node.key);//根
+          preOrderTraverseNode(node.left, callback);//左
+          preOrderTraverseNode(node.right, callback);//右
+        }
+      };
+
+
+      //后序遍历
+
+      this.postOrderTraverse = function(callback){
+        postOrderTraverseNode(root, callback);
+      };
+
+      var postOrderTraverseNode = function(node, callback){
+        if (node !== null) {
+          postOrderTraverseNode(node.left, callback);//左
+          postOrderTraverseNode(node.right, callback);//右
+          callback(node.key);//根
+        };
+      };
+
     }
 
   </script>
